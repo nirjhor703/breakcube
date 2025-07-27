@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BreakCube Player</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+  <div class="container" style="text-align: center;">
+    <h2>Enjoy Your Break</h2>
+    <video id="videoPlayer" controls autoplay style="max-width: 90vw; max-height: 70vh; border-radius: 16px; margin: 1.5rem 0; box-shadow: 0 0 20px rgba(0,255,255,0.3);">
+      Your browser does not support the video tag.
+    </video>
+    <div id="controls">
+      <button id="nextBtn" style="display:none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Next</button>
+      <p id="timer"></p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-button">⬅ Back</a>
+  <button class="exit-button" id="exitBtn">❌</button>
+
+  <script src="renderer.js"></script>
+
+  <script>
+    document.getElementById("exitBtn").addEventListener("click", () => {
+    window.electron.ipcRenderer.send("exit-app");
+  });
+  </script>
+</body>
+</html>

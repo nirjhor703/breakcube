@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BreakCube - Game Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <img src="logo.png" alt="" class="logo1">
+  <h1>Choose a Game</h1>
+
+  <div class="game-grid">
+    <div class="game-card" onclick="playGame('pacman')">
+      <img src="assets/pacman.jpg" alt="PacMan">
+      <div class="game-title">PacMan</div>
+    </div>
+    <div class="game-card" onclick="playGame('snake')">
+      <img src="assets/snake.jpg" alt="Snake">
+      <div class="game-title">Snake</div>
+    </div>
+    <div class="game-card" onclick="playGame('hangman')">
+      <img src="assets/hangman.jpg" alt="Hangman">
+      <div class="game-title">Hangman</div>
+    </div>
+    <div class="game-card" onclick="playGame('tetris')">
+      <img src="assets/tetris.jpg" alt="Tetris">
+      <div class="game-title">Tetris</div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-button">⬅ Back</a>
+  <button class="exit-button" id="exitBtn">❌</button>
+
+  <script>
+    function playGame(name) {
+      if (window.electron && window.electron.ipcRenderer) {
+        window.electron.ipcRenderer.send('play-game', name);
+      }
+    }
+
+    document.getElementById("exitBtn").addEventListener("click", () => {
+      window.electron.ipcRenderer.send("exit-app");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BreakCube - Choose Mode</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container" style="text-align: center;">
+    <img src="logo.png" alt="" class="logo">
+    <h1>Welcome To BreakCube</h1>
+    <h2>Select Mode</h2>
+    <button id="videoBtn">Video Mode</button><br><br>
+    <button id="gameBtn">Game Mode</button>
+    <button class="exit-button" id="exitBtn">❌</button>
+  </div>
+
+  <script>
+    document.getElementById("videoBtn").addEventListener("click", () => {
+      window.location.href = "category.html";
+    });
+
+    document.getElementById("gameBtn").addEventListener("click", () => {
+      const data = { mode: "game" };
+      const query = encodeURIComponent(JSON.stringify(data));
+      window.location.href = `gameMenu.html?data=${query}`;
+    });
+
+    document.getElementById("exitBtn").addEventListener("click", () => {
+    window.electron.ipcRenderer.send("exit-app");
+  });
+  </script>
+</body>
+</html>

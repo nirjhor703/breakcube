@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pac-Man</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .game-container {
+            text-align: center;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: #111;
+            border: 2px solid #fff;
+        }
+        .instructions {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        background-color: #1e1e2f;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 6px;
+        border: 1px solid #3a3a5c;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        font-weight: bold;
+        text-align: center;
+        }
+
+        .back-button:hover {
+        background-color: #2a2a40;
+        transform: scale(1.05);
+        color: #c1f5ff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Pac-Man</h1>
+        <canvas id="canvas" width="960" height="640">Your browser does not support Canvas.</canvas>
+        <div class="instructions">Press [Space] to pause or resume the game</div>
+        <a href="../../gameMenu.html" class="back-button">Back to Game Menu</a>
+    </div>
+
+    <!-- Your game scripts -->
+    <script src="./static/script/game.js"></script>
+    <script src="./static/script/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BreakCube - Select Categories</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <img src="logo.png" alt="BreakCube Logo" class="logo" />
+    <h1>Select Categories</h1>
+
+    <form id="categoryForm">
+
+  <div class="category-grid">
+    <label class="category-option">
+      <input type="checkbox" name="category" value="fun">
+      <span>Fun</span>
+    </label>
+    <label class="category-option">
+      <input type="checkbox" name="category" value="relax">
+      <span>Relax</span>
+    </label>
+    <label class="category-option">
+      <input type="checkbox" name="category" value="motivation">
+      <span>Motivation</span>
+    </label>
+    <label class="category-option">
+      <input type="checkbox" name="category" value="sports">
+      <span>Sports</span>
+    </label>
+    <label class="category-option">
+      <input type="checkbox" name="category" value="travel">
+      <span>Travel</span>
+    </label>
+    <label class="category-option">
+      <input type="checkbox" name="category" value="comedy">
+      <span>Comedy</span>
+    </label>
+  </div>
+
+  <button type="button" id="selectAllBtn" class="select-all-button">Select All</button><br>
+  <button type="submit" class="start-button">▶ Start Video Break</button>
+</form>
+
+    <a href="index.html" class="back-button">⬅ Back</a>
+    <button class="exit-button" id="exitBtn">❌</button>
+  </div>
+
+  <script>
+    document.getElementById("categoryForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const selected = Array.from(document.querySelectorAll("input[name='category']:checked"))
+                            .map(input => input.value);
+
+      if (selected.length === 0) {
+        alert("Please select at least one category.");
+        return;
+      }
+
+      const data = {
+        mode: "video",
+        categories: selected
+      };
+
+      const query = encodeURIComponent(JSON.stringify(data));
+      window.location.href = `player.html?data=${query}`;
+    });
+
+    document.getElementById("exitBtn").addEventListener("click", () => {
+      window.electron.ipcRenderer.send("exit-app");
+    });
+
+    document.getElementById("selectAllBtn").addEventListener("click", function() {
+    const checkboxes = document.querySelectorAll("input[name='category']");
+    checkboxes.forEach(cb => cb.checked = true);
+});
+  </script>
+</body>
+</html>
