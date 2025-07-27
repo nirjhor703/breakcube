@@ -6,3 +6,6 @@ node_modules/
 dist/
 *.mp4
 *.exe
+dist/
+*.exe
+*.mp4
